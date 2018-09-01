@@ -3,9 +3,9 @@ class lexicon(object):
     def __init__(self):
         #lexicon
         self.directions = ['north', 'south', 'east', 'west', 'down', 'up', 'left', 'right', 'back']
-        self.verbs = ['go', 'stop', 'kill', 'eat']
-        self.stops = ['the', 'in', 'of', 'from', 'at', 'it']
-        self.nouns = ['door', 'bear', 'princess', 'cabinet']
+        self.verbs = ['go', 'stop', 'kill', 'eat', 'run']
+        self.stops = ['the', 'in', 'of', 'from', 'at', 'it', 'a']
+        self.nouns = ['door', 'bear', 'princess', 'cabinet', 'cthulhu', 'snickers', 'honey']
 
     def tuplify(self, word):
         word_lower = word.lower()
