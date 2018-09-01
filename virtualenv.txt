@@ -1,0 +1,1 @@
+.\.venvs\lpthw\Scripts\activate
