@@ -2,7 +2,13 @@
 
 {% block content %}
 
-<h1> {{ room.name }} </h1>
+<h1>
+{% if room.name == "death" %}
+        You Died!
+{% else %}
+        {{room.name}}
+{% endif %}
+</h1>
 
 <pre>
 {{ room.description }}

@@ -32,20 +32,20 @@ def test_map():
 
 def test_gothon_game_map():
     start_room = load_room(START)
-    assert_equal(start_room.go('shoot!'), generic_death)
-    assert_equal(start_room.go('dodge!'), generic_death)
+    assert_equal(start_room.go('shoot'), death_central_corridor_shoot)
+    assert_equal(start_room.go('dodge'), death_central_corridor_dodge)
 
-    room = start_room.go('tell a joke')
+    room = start_room.go('tell joke')
     assert_equal(room, laser_weapon_armory)
 
-    assert_equal(room.go('*'), generic_death)
+    assert_equal(room.go('*'), death_laser_weapon_armory)
 
-    room = start_room.go('tell a joke').go('0132')
+    room = start_room.go('tell joke').go('132')
     assert_equal(room, the_bridge)
 
-    assert_equal(room.go('throw the bomb'), generic_death)
+    assert_equal(room.go('throw bomb'), death_the_bridge)
 
-    room = start_room.go('tell a joke').go('0132').go('slowly place the bomb')
+    room = start_room.go('tell joke').go('132').go('place bomb')
     assert_equal(room, escape_pod)
 
     assert_equal(room.go('*'), the_end_loser)

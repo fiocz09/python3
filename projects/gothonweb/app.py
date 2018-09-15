@@ -1,6 +1,6 @@
 from flask import Flask, session, redirect, url_for, escape, request
 from flask import render_template
-from gothonweb import planisphere
+from gothonweb import planisphere, lexicon, parser
 
 app = Flask(__name__)
 
@@ -21,7 +21,15 @@ def game():
         else:
             return render_template("you_died.html")
     else:
-        action = request.form.get('action')
+        if room_name == 'laser_weapon_armory' or room_name == 'escape_pod':
+            action = request.form.get('action')
+
+        else:
+            result = parser.parse_sentence(lexicon.scan(request.form.get('action')))
+            if result.object == 'blank':
+                action = result.verb
+            else:
+                action = result.verb + ' ' + result.object
 
         if room_name and action:
             room = planisphere.load_room(room_name)
